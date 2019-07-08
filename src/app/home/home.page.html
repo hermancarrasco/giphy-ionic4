@@ -8,7 +8,18 @@
 
 <ion-content>
   <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
+    <ion-searchbar (keyup)="getEnter($event)" [(ngModel)]="busqueda"></ion-searchbar>
+    <ion-row *ngIf="gifs">
+    <ion-col  sizeMd="4" sizeLg="4" sizeXl="3" *ngFor="let i of gifs.data">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title text-center>{{i.title}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-img [src]="i.images.fixed_width.url"></ion-img>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+    </ion-row>
   </div>
 </ion-content>
